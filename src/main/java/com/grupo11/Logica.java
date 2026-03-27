@@ -39,16 +39,6 @@ public class Logica {
 
     }
 
-        // Lucas:
-        // Acá habría que:
-        // 1. pedir al usuario que ingrese una opción del menú
-        // 2. leer lo que escribe
-        // 3. validar que el dato ingresado sea numérico
-        // 4. validar que la opción esté entre 0 y 4
-        // 5. si hay error, volver a pedir la opción
-        // 6. devolver la opción válida
-
-
 
     public void sumar() {
         // Faustina: suma
