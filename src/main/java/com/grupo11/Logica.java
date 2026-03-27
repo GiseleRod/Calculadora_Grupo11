@@ -11,6 +11,34 @@ public class Logica {
     }
 
     public int leerOpcionMenu() {
+
+        int opcion = 0;
+        boolean opcionValida = false;
+
+        while (!opcionValida) {
+
+            System.out.println("SELECCIONAR UNA OPCIÓN [0 a 4] Y PRESIONAR ENTER:");
+
+            if (scanner.hasNextInt()) {
+
+                opcion = scanner.nextInt();
+                scanner.nextLine();
+
+                if (opcion >= 0 && opcion <= 4) {
+                    opcionValida = true;
+                } else {
+                    System.out.println("ERROR: LA OPCION DEBE SER ENTRE 0 Y 4");
+                }
+            } else {
+                System.out.println("ERROR: SE DEBE INGRESAR UN NUMERO");
+                scanner.nextLine();
+            }
+
+        }
+        return opcion;
+
+    }
+
         // Lucas:
         // Acá habría que:
         // 1. pedir al usuario que ingrese una opción del menú
@@ -19,8 +47,8 @@ public class Logica {
         // 4. validar que la opción esté entre 0 y 4
         // 5. si hay error, volver a pedir la opción
         // 6. devolver la opción válida
-        return 0;
-    }
+
+
 
     public void sumar() {
         // Faustina: suma
