@@ -49,12 +49,59 @@ public class Logica {
     }
 
     public void multiplicar() {
-        // Diego y Victoria: multiplicación
+         boolean continuar = true;
+
+        while (continuar) {
+
+            int num1 = leerEnteroPositivo("Ingrese el primer número:");
+            int num2 = leerEnteroPositivo("Ingrese el segundo número:");
+
+            int resultado = num1 * num2;
+
+            System.out.println("El resultado de la multiplicación es: " + resultado);
+
+            continuar = deseaContinuar("multiplicación");
+        }
     }
+    
 
     public void dividir() {
-        // Diego y Victoria: división
+       boolean continuar = true;
+
+    while (continuar) {
+
+        int num1 = leerEnteroPositivo("Ingrese el primer número:");
+        int num2;
+
+        do {
+            num2 = leerEnteroPositivo("Ingrese el segundo número (distinto de 0):");
+
+            if (num2 == 0) {
+                System.out.println("ERROR: No se puede dividir por cero.");
+            }
+
+        } while (num2 == 0);
+
+        //ORDENAR NÚMEROS
+        int mayor;
+        int menor;
+
+        if (num1 > num2) {
+            mayor = num1;
+            menor = num2;
+        } else {
+            mayor = num2;
+            menor = num1;
+        }
+
+        double resultado = (double) mayor / menor;
+
+        System.out.println("El resultado de la división es: " + resultado);
+
+        continuar = deseaContinuar("división");
     }
+}
+
 
     private int leerEnteroPositivo(String mensaje) {
         // Gisele:
