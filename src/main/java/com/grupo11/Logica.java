@@ -62,16 +62,8 @@ public class Logica {
     while (continuar) {
 
         int num1 = leerEnteroPositivo("Ingrese el primer número:");
-        int num2;
-
-        do {
-            num2 = leerEnteroPositivo("Ingrese el segundo número (distinto de 0):");
-
-            if (num2 == 0) {
-                System.out.println("ERROR: No se puede dividir por cero.");
-            }
-
-        } while (num2 == 0);
+        int num2; leerEnteroPositivo("Ingrese el segundo número:");
+    }
 
         //ORDENAR NÚMEROS
         int mayor;
