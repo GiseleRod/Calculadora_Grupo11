@@ -105,9 +105,12 @@ public class Logica {
             menor = num1;
         }
 
-        double resultado = (double) mayor / menor;
-
-         System.out.printf("El resultado de la división es: %.2f%n", resultado);
+        if (mayor % menor == 0) {
+            System.out.println("El resultado de la división es: " + (mayor / menor));
+        } else {
+            double resultado = (double) mayor / menor;
+            System.out.printf("El resultado de la división es: %.2f%n", resultado);
+        }
 
         continuar = deseaContinuar("división");
     }
