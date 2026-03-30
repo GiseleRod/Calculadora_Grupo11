@@ -33,7 +33,7 @@ public class Logica {
 
     public void sumar() {
         boolean continuar = true;
-        while (continuar) 
+        while (continuar) {
             
             int num1 = leerEnteroPositivo("Ingrese el primer número:");
             int num2 = leerEnteroPositivo("Ingrese el segundo número:");
