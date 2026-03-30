@@ -46,7 +46,26 @@ public class Logica {
     }
 
     public void restar() {
-        // Martín: resta
+        boolean continuar = true;
+
+        while (continuar) {
+
+            int num1 = leerEnteroPositivo("Ingrese el primer número:");
+            int num2 = leerEnteroPositivo("Ingrese el segundo número:");
+
+            int mayor;
+            int menor;
+
+            if (num1 > num2) {
+                mayor = num1;
+                menor = num2;
+            } else {
+                mayor = num2;
+                menor = num1;
+            }
+            int resultado = mayor - menor;
+            System.out.println("El resultado de la resta es: " + resultado);
+            continuar = deseaContinuar("restar");
     }
 
     public void multiplicar() {
