@@ -97,7 +97,7 @@ public class Calculadora {
             if(min == 0){
                 System.out.println("Error: el numero mas chico no puede ser 0");
             }else{
-                int resultado = (max / min);
+                double resultado = (double) max / min;
                 System.out.println(max + " / " + min + " = " + resultado);
             }
             repetir = Continuar(sc);
