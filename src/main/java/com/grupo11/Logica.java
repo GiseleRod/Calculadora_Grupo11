@@ -32,7 +32,17 @@ public class Logica {
     }
 
     public void sumar() {
-        // Faustina: suma
+        boolean continuar = true;
+        while (continuar) 
+            
+            int num1 = leerEnteroPositivo("Ingrese el primer número:");
+            int num2 = leerEnteroPositivo("Ingrese el segundo número:");
+        
+            int resultado = num1 + num2;
+        
+            System.out.println("El resultado de la suma es: " + resultado);
+            continuar = deseaContinuar("sumar");
+        }
     }
 
     public void restar() {
