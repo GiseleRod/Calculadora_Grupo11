@@ -66,6 +66,7 @@ public class Logica {
             int resultado = mayor - menor;
             System.out.println("El resultado de la resta es: " + resultado);
             continuar = deseaContinuar("restar");
+        }
     }
 
     public void multiplicar() {
