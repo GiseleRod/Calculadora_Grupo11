@@ -21,10 +21,10 @@ public class Logica {
                 if (opcion >= 0 && opcion <= 4) {
                     opcionValida = true;
                 } else {
-                    System.out.println("ERROR: LA OPCION DEBE SER ENTRE 0 Y 4");
+                    System.out.println("ERROR: La opción debe estar entre 0 y 4.");
                 }
             } else {
-                System.out.println("ERROR: SE DEBE INGRESAR UN NUMERO");
+                System.out.println("ERROR: Se debe ingresar un número.");
                 scanner.nextLine();
             }
         }
@@ -128,11 +128,11 @@ public class Logica {
                 if (numero > 0) {
                     return numero;
                 } else {
-                    System.out.println("Error: debe ingresar un numero entero positivo mayor que 0.");
+                    System.out.println("ERROR: debe ingresar un número entero positivo mayor que 0.");
                 }
 
             } catch (NumberFormatException e) { // Si la entrada no es un entero válido, mostrar error y volver a pedir.
-                System.out.println("Error: debe ingresar un valor numérico entero.");
+                System.out.println("ERROR: debe ingresar un valor numérico entero.");
             }
         }
     }
@@ -148,7 +148,7 @@ public class Logica {
             } else if (respuesta.equals("N")) {
                 return false;
             } else {
-                System.out.println("Error: debe responder con S o N.");
+                System.out.println("ERROR: debe responder con S o N.");
             }
         }
     }

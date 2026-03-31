@@ -26,7 +26,7 @@ public class Menu {
                     logica.dividir();
                     break;
                 case 0:
-                    System.out.println("SALIENDO DEL PROGRAMA");
+                    System.out.println("Saliendo del programa...");
                     break;
             }
             System.out.println();
@@ -35,11 +35,14 @@ public class Menu {
     }
 
     private void mostrarMenu() {
+        System.out.println("");
         System.out.println("*** CALCULADORA BASICA ***");
+        System.out.println("");
         System.out.println("[1] - SUMAR");
         System.out.println("[2] - RESTAR");
         System.out.println("[3] - MULTIPLICAR");
         System.out.println("[4] - DIVIDIR");
         System.out.println("[0] - SALIR DEL PROGRAMA");
+        System.out.println("");
     }
 }
