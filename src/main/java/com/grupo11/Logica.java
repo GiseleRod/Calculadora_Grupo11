@@ -13,7 +13,7 @@ public class Logica {
         boolean opcionValida = false;
 
         while (!opcionValida) {
-            System.out.println("SELECCIONAR UNA OPCIÓN [0 a 4] Y PRESIONAR ENTER:");
+            System.out.println("SELECCIONAR UNA OPCIÓN [0 a 4] Y PRESIONAR ENTER: ");
             if (scanner.hasNextInt()) {
                 opcion = scanner.nextInt();
                 scanner.nextLine();
@@ -21,10 +21,10 @@ public class Logica {
                 if (opcion >= 0 && opcion <= 4) {
                     opcionValida = true;
                 } else {
-                    System.out.println("ERROR: LA OPCION DEBE SER ENTRE 0 Y 4");
+                    System.out.println("ERROR: La opción debe ser entre 0 y 4");
                 }
             } else {
-                System.out.println("ERROR: SE DEBE INGRESAR UN NUMERO");
+                System.out.println("ERROR: Se debe ingresar un número");
                 scanner.nextLine();
             }
         }
@@ -35,8 +35,8 @@ public class Logica {
         boolean continuar = true;
         while (continuar) {
             
-            int num1 = leerEnteroPositivo("Ingrese el primer número:");
-            int num2 = leerEnteroPositivo("Ingrese el segundo número:");
+            int num1 = leerEnteroPositivo("Ingrese el primer número: ");
+            int num2 = leerEnteroPositivo("Ingrese el segundo número: ");
         
             int resultado = num1 + num2;
         
@@ -50,8 +50,8 @@ public class Logica {
 
         while (continuar) {
 
-            int num1 = leerEnteroPositivo("Ingrese el primer número:");
-            int num2 = leerEnteroPositivo("Ingrese el segundo número:");
+            int num1 = leerEnteroPositivo("Ingrese el primer número: ");
+            int num2 = leerEnteroPositivo("Ingrese el segundo número: ");
 
             int mayor;
             int menor;
@@ -74,8 +74,8 @@ public class Logica {
 
         while (continuar) {
 
-            int num1 = leerEnteroPositivo("Ingrese el primer número:");
-            int num2 = leerEnteroPositivo("Ingrese el segundo número:");
+            int num1 = leerEnteroPositivo("Ingrese el primer número: ");
+            int num2 = leerEnteroPositivo("Ingrese el segundo número: ");
 
             int resultado = num1 * num2;
 
@@ -90,8 +90,8 @@ public class Logica {
        boolean continuar = true;
         while (continuar) {
 
-        int num1 = leerEnteroPositivo("Ingrese el primer número:");
-        int num2 = leerEnteroPositivo("Ingrese el segundo número:");
+        int num1 = leerEnteroPositivo("Ingrese el primer número: ");
+        int num2 = leerEnteroPositivo("Ingrese el segundo número: ");
 
         //ORDENAR NÚMEROS
         int mayor;
@@ -128,7 +128,7 @@ public class Logica {
                 if (numero > 0) {
                     return numero;
                 } else {
-                    System.out.println("Error: debe ingresar un numero entero positivo mayor que 0.");
+                    System.out.println("Error: debe ingresar un número entero positivo mayor que 0.");
                 }
 
             } catch (NumberFormatException e) { // Si la entrada no es un entero válido, mostrar error y volver a pedir.
