@@ -13,7 +13,7 @@ public class Logica {
         boolean opcionValida = false;
 
         while (!opcionValida) {
-            System.out.println("SELECCIONAR UNA OPCIÓN [0 a 4] Y PRESIONAR ENTER: ");
+            System.out.print("SELECCIONAR UNA OPCIÓN [0 a 4] Y PRESIONAR ENTER: ");
             if (scanner.hasNextInt()) {
                 opcion = scanner.nextInt();
                 scanner.nextLine();

@@ -35,6 +35,7 @@ public class Menu {
     }
 
     private void mostrarMenu() {
+        System.out.println("");
         System.out.println("*** CALCULADORA BASICA ***");
         System.out.println("");
         System.out.println("[1] - SUMAR");
@@ -42,5 +43,6 @@ public class Menu {
         System.out.println("[3] - MULTIPLICAR");
         System.out.println("[4] - DIVIDIR");
         System.out.println("[0] - SALIR DEL PROGRAMA");
+        System.out.println("");
     }
 }
