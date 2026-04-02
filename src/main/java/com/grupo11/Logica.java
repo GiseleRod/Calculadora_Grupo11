@@ -35,10 +35,10 @@ public class Logica {
         boolean continuar = true;
         while (continuar) {
             
-            int num1 = leerEnteroPositivo("Ingrese el primer número: ");
-            int num2 = leerEnteroPositivo("Ingrese el segundo número: ");
+            long num1 = leerEnteroPositivo("Ingrese el primer número: ");
+            long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
         
-            int resultado = num1 + num2;
+            long resultado = num1 + num2;
         
             System.out.println("El resultado de la suma es: " + resultado);
             continuar = deseaContinuar("sumar");
@@ -50,11 +50,11 @@ public class Logica {
 
         while (continuar) {
 
-            int num1 = leerEnteroPositivo("Ingrese el primer número: ");
-            int num2 = leerEnteroPositivo("Ingrese el segundo número: ");
+            long num1 = leerEnteroPositivo("Ingrese el primer número: ");
+            long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
 
-            int mayor;
-            int menor;
+            long mayor;
+            long menor;
 
             if (num1 > num2) {
                 mayor = num1;
@@ -63,7 +63,7 @@ public class Logica {
                 mayor = num2;
                 menor = num1;
             }
-            int resultado = mayor - menor;
+            long resultado = mayor - menor;
             System.out.println("El resultado de la resta es: " + resultado);
             continuar = deseaContinuar("restar");
         }
@@ -74,10 +74,10 @@ public class Logica {
 
         while (continuar) {
 
-            int num1 = leerEnteroPositivo("Ingrese el primer número: ");
-            int num2 = leerEnteroPositivo("Ingrese el segundo número: ");
+            long num1 = leerEnteroPositivo("Ingrese el primer número: ");
+            long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
 
-            int resultado = num1 * num2;
+            long resultado = num1 * num2;
 
             System.out.println("El resultado de la multiplicación es: " + resultado);
 
@@ -90,12 +90,12 @@ public class Logica {
        boolean continuar = true;
         while (continuar) {
 
-        int num1 = leerEnteroPositivo("Ingrese el primer número: ");
-        int num2 = leerEnteroPositivo("Ingrese el segundo número: ");
+        long num1 = leerEnteroPositivo("Ingrese el primer número: ");
+        long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
 
         //ORDENAR NÚMEROS
-        int mayor;
-        int menor;
+        long mayor;
+        long menor;
 
         if (num1 > num2) {
             mayor = num1;
@@ -117,13 +117,13 @@ public class Logica {
 }
 
 
-    private int leerEnteroPositivo(String mensaje) {
+    private long leerEnteroPositivo(String mensaje) {
         while (true) {
             System.out.print(mensaje);
             String entrada = scanner.nextLine();
 
             try {
-                int numero = Integer.parseInt(entrada);
+                long numero = Long.parseLong(entrada);
 
                 if (numero > 0) {
                     return numero;
