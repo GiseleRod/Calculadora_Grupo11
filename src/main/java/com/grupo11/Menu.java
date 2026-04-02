@@ -7,7 +7,7 @@ public class Menu {
     }
 
     public void iniciar() {
-        int opcion=0;
+        int opcion = 0;
         do {
             mostrarMenu();
             opcion = logica.leerOpcionMenu();
@@ -26,6 +26,7 @@ public class Menu {
                     logica.dividir();
                     break;
                 case 0:
+                    System.out.println("");
                     System.out.println("Saliendo del programa...");
                     break;
             }
@@ -36,7 +37,7 @@ public class Menu {
 
     private void mostrarMenu() {
         System.out.println("");
-        System.out.println("*** CALCULADORA BASICA ***");
+        System.out.println("*** CALCULADORA BÁSICA ***");
         System.out.println("");
         System.out.println("[1] - SUMAR");
         System.out.println("[2] - RESTAR");

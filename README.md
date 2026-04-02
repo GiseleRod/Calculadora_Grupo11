@@ -36,6 +36,18 @@ La calculadora permite:
 - consultar al usuario si desea repetir la operación
 - volver al menú principal o salir del programa
 
+## Alcance y funcionalidades no incluidas
+El sistema fue desarrollado de acuerdo con los requerimientos relevados para esta primera versión. En consecuencia, no contempla:
+
+- ingreso de números decimales
+- ingreso de números negativos
+- ingreso del valor 0 como operando
+- operaciones encadenadas
+- cálculo de porcentajes
+- interfaz gráfica
+- almacenamiento de historial de operaciones
+- persistencia de datos
+
 ## Validaciones implementadas
 El sistema incluye las siguientes validaciones:
 
@@ -53,28 +65,35 @@ El proyecto está organizado en tres clases principales:
 - `Logica`: contiene las operaciones matemáticas y las validaciones
 
 ## Organización del trabajo
-El equipo utilizó GitHub para organizar el desarrollo y centralizar el código fuente, y Trello para distribuir y hacer seguimiento de las tareas.
+El equipo utilizó GitHub para organizar el desarrollo y centralizar el código fuente, Trello para distribuir y hacer seguimiento de las tareas, y Google Docs para la elaboración colaborativa de la documentación.
 
-Distribución inicial de tareas:
+Distribución de tareas:
 
 - Lucas D'Amico: menú principal
 - Faustina Enecoiz: suma
 - Martín Romero: resta
-- Diego Casas: multiplicación y división
-- Victoria Pereyra: multiplicación y división
-- Gisele Rodriguez: revisión general, integración final.
+- Diego Casas: pruebas de funcionamiento, organización y presentación de la demo
+- Victoria Pereyra: multiplicación, división y coordinación general del trabajo
+- Gisele Rodriguez: revisión general e integración final
+
+La documentación del trabajo fue elaborada de manera colaborativa entre los integrantes del grupo.
 
 ## Herramientas utilizadas
 - Java
 - IntelliJ IDEA / NetBeans / VS Code
 - GitHub
 - Trello
+- Google Docs
+
+## Versión
+Versión actual: 1.0
 
 ## Estado del proyecto
-El proyecto se encuentra en etapa de revisión final.
+El proyecto se encuentra finalizado.
 
-Actualmente se están realizando:
-- pruebas de funcionamiento
-- correcciones menores de redacción y presentación
-- ajustes de formato en mensajes mostrados por consola
-- verificación final antes de la entrega
+Actualmente se dispone de:
+- código fuente completo
+- archivo ejecutable `.jar`
+- validaciones implementadas según la consigna
+- pruebas manuales de las operaciones y validaciones principales
+- documentación de entrega completa, incluyendo README y manual de uso
