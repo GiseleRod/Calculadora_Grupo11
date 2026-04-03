@@ -29,7 +29,7 @@ La calculadora permite:
 
 - mostrar un menú principal de opciones
 - seleccionar una operación matemática
-- ingresar dos números enteros positivos
+- ingresar dos números enteros positivos de tipo `long`
 - validar que los datos ingresados sean numéricos
 - validar que los valores ingresados sean enteros positivos
 - realizar la operación correspondiente
@@ -47,6 +47,7 @@ El sistema fue desarrollado de acuerdo con los requerimientos relevados para est
 - interfaz gráfica
 - almacenamiento de historial de operaciones
 - persistencia de datos
+- resultados que excedan la capacidad máxima del tipo long
 
 ## Validaciones implementadas
 El sistema incluye las siguientes validaciones:
@@ -56,6 +57,8 @@ El sistema incluye las siguientes validaciones:
 - los valores ingresados para operar deben ser numéricos
 - los valores ingresados deben ser enteros positivos
 - en las operaciones de resta y división, se utiliza primero el número mayor y luego el menor, según lo requerido en la especificación
+- en suma, se valida que el resultado no supere el valor máximo permitido por el tipo long
+- en multiplicación, se valida que el resultado no supere el valor máximo permitido por el tipo long
 
 ## Estructura del proyecto
 El proyecto está organizado en tres clases principales:
@@ -74,7 +77,7 @@ Distribución de tareas:
 - Martín Romero: resta
 - Diego Casas: pruebas de funcionamiento, organización y presentación de la demo
 - Victoria Pereyra: multiplicación, división y coordinación general del trabajo
-- Gisele Rodriguez: revisión general e integración final
+- Gisele Rodríguez: revisión general e integración final
 
 La documentación del trabajo fue elaborada de manera colaborativa entre los integrantes del grupo.
 

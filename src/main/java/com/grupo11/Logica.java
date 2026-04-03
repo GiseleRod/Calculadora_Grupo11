@@ -37,11 +37,15 @@ public class Logica {
             
             long num1 = leerEnteroPositivo("Ingrese el primer número: ");
             long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
-        
-            long resultado = num1 + num2;
-        
-            System.out.println("El resultado de la suma es: " + resultado);
-            continuar = deseaContinuar("sumar");
+
+            try {
+                long resultado = Math.addExact(num1, num2);
+                System.out.println("El resultado de la suma es: " + resultado);
+            } catch (ArithmeticException e) {
+                System.out.println("ERROR: El resultado de la suma supera el valor máximo permitido.");
+            }
+
+            continuar = deseaContinuar("suma");
         }
     }
 
@@ -77,9 +81,12 @@ public class Logica {
             long num1 = leerEnteroPositivo("Ingrese el primer número: ");
             long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
 
-            long resultado = num1 * num2;
-
-            System.out.println("El resultado de la multiplicación es: " + resultado);
+            try {
+                long resultado = Math.multiplyExact(num1, num2);
+                System.out.println("El resultado de la multiplicación es: " + resultado);
+            } catch (ArithmeticException e) {
+                System.out.println("ERROR: El resultado de la multiplicación supera el valor máximo permitido.");
+            }
 
             continuar = deseaContinuar("multiplicación");
         }
@@ -130,13 +137,11 @@ public class Logica {
                 } else {
                     System.out.println("ERROR: Debe ingresar un número entero positivo mayor que 0.");
                 }
-
             } catch (NumberFormatException e) { // Si la entrada no es un entero válido, mostrar error y volver a pedir.
                 System.out.println("ERROR: Debe ingresar un valor numérico entero.");
             }
         }
     }
-
 
     private boolean deseaContinuar(String operacion) {
         while (true) {
