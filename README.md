@@ -48,6 +48,7 @@ El sistema fue desarrollado de acuerdo con los requerimientos relevados para est
 - almacenamiento de historial de operaciones
 - persistencia de datos
 - resultados que excedan la capacidad máxima del tipo long
+- mostrar el resultado de la división con dos decimales cuando el cociente no es exacto
 
 ## Validaciones implementadas
 El sistema incluye las siguientes validaciones:
@@ -59,6 +60,7 @@ El sistema incluye las siguientes validaciones:
 - en las operaciones de resta y división, se utiliza primero el número mayor y luego el menor, según lo requerido en la especificación
 - en suma, se valida que el resultado no supere el valor máximo permitido por el tipo long
 - en multiplicación, se valida que el resultado no supere el valor máximo permitido por el tipo long
+- en división, cuando el resultado no es exacto, el sistema muestra el cociente en formato decimal con dos cifras decimales, como decisión de implementación del equipo
 
 ## Estructura del proyecto
 El proyecto está organizado en tres clases principales:
