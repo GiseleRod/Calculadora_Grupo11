@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Logica {
     private final Scanner scanner;
+    Resultado resultado = new Resultado();
 
     public Logica() {
         scanner = new Scanner(System.in);
@@ -15,15 +16,15 @@ public class Logica {
         boolean opcionValida = false;
 
         while (!opcionValida) {
-            System.out.print("SELECCIONAR UNA OPCIÓN [0 a 4] Y PRESIONAR ENTER: ");
+            System.out.print("SELECCIONAR UNA OPCIÓN [0 a 5] Y PRESIONAR ENTER: ");
             if (scanner.hasNextInt()) {
                 opcion = scanner.nextInt();
                 scanner.nextLine();
 
-                if (opcion >= 0 && opcion <= 4) {
+                if (opcion >= 0 && opcion <= 5) {
                     opcionValida = true;
                 } else {
-                    System.out.println("ERROR: La opción debe estar entre 0 y 4.");
+                    System.out.println("ERROR: La opción debe estar entre 0 y 5.");
                 }
             } else {
                 System.out.println("ERROR: Debe ingresar un número.");
@@ -43,6 +44,7 @@ public class Logica {
             try {
                 long resultado = Math.addExact(num1, num2);
                 System.out.println("El resultado de la suma es: " + resultado);
+                this.resultado.agregarResultado(resultado);
             } catch (ArithmeticException e) {
                 System.out.println("ERROR: El resultado de la suma supera el valor máximo permitido.");
             }
@@ -71,6 +73,7 @@ public class Logica {
             }
             long resultado = mayor - menor;
             System.out.println("El resultado de la resta es: " + resultado);
+            this.resultado.agregarResultado(resultado);
             continuar = deseaContinuar("restar");
         }
     }
@@ -86,6 +89,7 @@ public class Logica {
             try {
                 long resultado = Math.multiplyExact(num1, num2);
                 System.out.println("El resultado de la multiplicación es: " + resultado);
+                this.resultado.agregarResultado(resultado);
             } catch (ArithmeticException e) {
                 System.out.println("ERROR: El resultado de la multiplicación supera el valor máximo permitido.");
             }
@@ -118,6 +122,7 @@ public class Logica {
             } else {
                 double resultado = (double) mayor / menor;
                 System.out.printf("El resultado de la división es: %.2f%n", resultado);
+                this.resultado.agregarResultado(Math.round(resultado));
             }
 
             continuar = deseaContinuar("división");

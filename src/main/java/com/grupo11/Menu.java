@@ -2,6 +2,7 @@ package com.grupo11;
 
 public class Menu {
     private final Logica logica;
+    
 
     public Menu() {
         logica = new Logica();
@@ -27,7 +28,7 @@ public class Menu {
                     logica.dividir();
                     break;
                 case 5:
-                    logica.resultado.mostrarresultado();
+                    logica.resultado.getResultado();
                     break;
                 case 0:
                     System.out.println("");
