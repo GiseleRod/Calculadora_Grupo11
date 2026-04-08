@@ -2,6 +2,7 @@ package com.grupo11;
 
 public class Menu {
     private final Logica logica;
+
     public Menu() {
         logica = new Logica();
     }
@@ -25,6 +26,9 @@ public class Menu {
                 case 4:
                     logica.dividir();
                     break;
+                case 5:
+                    logica.resultado.mostrarresultado();
+                    break;
                 case 0:
                     System.out.println("");
                     System.out.println("Saliendo del programa...");
@@ -43,6 +47,7 @@ public class Menu {
         System.out.println("[2] - RESTAR");
         System.out.println("[3] - MULTIPLICAR");
         System.out.println("[4] - DIVIDIR");
+        System.out.println("[5] - RESULTADOS GUARDADOS");
         System.out.println("[0] - SALIR DEL PROGRAMA");
         System.out.println("");
     }

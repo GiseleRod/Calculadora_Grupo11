@@ -4,9 +4,11 @@ import java.util.Scanner;
 
 public class Logica {
     private final Scanner scanner;
+
     public Logica() {
         scanner = new Scanner(System.in);
     }
+
     public int leerOpcionMenu() {
 
         int opcion = 0;
@@ -34,7 +36,7 @@ public class Logica {
     public void sumar() {
         boolean continuar = true;
         while (continuar) {
-            
+
             long num1 = leerEnteroPositivo("Ingrese el primer número: ");
             long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
 
@@ -74,7 +76,7 @@ public class Logica {
     }
 
     public void multiplicar() {
-         boolean continuar = true;
+        boolean continuar = true;
 
         while (continuar) {
 
@@ -91,38 +93,36 @@ public class Logica {
             continuar = deseaContinuar("multiplicación");
         }
     }
-    
 
     public void dividir() {
-       boolean continuar = true;
+        boolean continuar = true;
         while (continuar) {
 
-        long num1 = leerEnteroPositivo("Ingrese el primer número: ");
-        long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
+            long num1 = leerEnteroPositivo("Ingrese el primer número: ");
+            long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
 
-        //ORDENAR NÚMEROS
-        long mayor;
-        long menor;
+            // ORDENAR NÚMEROS
+            long mayor;
+            long menor;
 
-        if (num1 > num2) {
-            mayor = num1;
-            menor = num2;
-        } else {
-            mayor = num2;
-            menor = num1;
+            if (num1 > num2) {
+                mayor = num1;
+                menor = num2;
+            } else {
+                mayor = num2;
+                menor = num1;
+            }
+
+            if (mayor % menor == 0) {
+                System.out.println("El resultado de la división es: " + (mayor / menor));
+            } else {
+                double resultado = (double) mayor / menor;
+                System.out.printf("El resultado de la división es: %.2f%n", resultado);
+            }
+
+            continuar = deseaContinuar("división");
         }
-
-        if (mayor % menor == 0) {
-            System.out.println("El resultado de la división es: " + (mayor / menor));
-        } else {
-            double resultado = (double) mayor / menor;
-            System.out.printf("El resultado de la división es: %.2f%n", resultado);
-        }
-
-        continuar = deseaContinuar("división");
     }
-}
-
 
     private long leerEnteroPositivo(String mensaje) {
         while (true) {
@@ -161,4 +161,5 @@ public class Logica {
     public void cerrarScanner() {
         scanner.close();
     }
+
 }
