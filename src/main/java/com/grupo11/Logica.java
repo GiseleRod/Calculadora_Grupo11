@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Logica {
     private final Scanner scanner;
-    // creando la clase resultado
+
     public Logica() {
         scanner = new Scanner(System.in);
     }
@@ -161,54 +161,4 @@ public class Logica {
     public void cerrarScanner() {
         scanner.close();
     }
-
-}
-
-class Resultado {
-    private int[] lista;
-    private int index;
-
-    // constructor
-    public Resultado() {
-        this.lista = new int[3];
-        this.index = 0;
-        
-    }
-    public void prueba (){
-      System.out.println(lista[0]);  
-    }
-    
-
-    public void guardarResultado(int resultado) {
-        if (index == 3) {
-            index = 0;
-            lista[index] = resultado;
-            index ++;
-
-        } else {
-            lista[index] = resultado;
-            index++;
-        }
-    }
-
-    public void mostrarResultado() {
-        if (this.lista[2] == null ) {
-            System.out.println("no se hicieron 3 operaciones");
-        } else {
-            int ciclo = index;
-            for (int i = 0; i < lista.length; i++) {
-                if (ciclo == 3) {
-                    ciclo = 0;
-                    System.out.println(lista[ciclo]);
-                    ciclo++;
-
-                } else {
-                    System.out.println(lista[ciclo]);
-                    ciclo++;
-                }
-            }
-        }
-    }
-
-
 }
