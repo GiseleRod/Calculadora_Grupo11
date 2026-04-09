@@ -138,6 +138,7 @@ public class Logica {
 
             if (mayor % menor == 0) {
                 System.out.println("El resultado de la división es: " + (mayor / menor));
+                agregarResultadoGuardado((mayor / menor));
             } else {
                 long resultado = Math.round((float) mayor / menor);
                 System.out.println("El resultado de la división es:" + resultado);
