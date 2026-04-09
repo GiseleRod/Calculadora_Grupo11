@@ -34,6 +34,10 @@ public class Logica {
         return opcion;
     }
 
+    public void mostrarResultadosGuardados() {
+        resultado.mostrarResultado();
+    }
+
     public void sumar() {
         boolean continuar = true;
         while (continuar) {
@@ -120,9 +124,9 @@ public class Logica {
             if (mayor % menor == 0) {
                 System.out.println("El resultado de la división es: " + (mayor / menor));
             } else {
-                double resultado = (double) mayor / menor;
-                System.out.printf("El resultado de la división es: %.2f%n", resultado);
-                this.resultado.agregarResultado(Math.round(resultado));
+                long resultado = Math.round((float) mayor / menor);
+                System.out.println("El resultado de la división es:" + resultado);
+                this.resultado.agregarResultado(resultado);
             }
 
             continuar = deseaContinuar("división");

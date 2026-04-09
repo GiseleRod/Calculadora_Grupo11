@@ -28,7 +28,7 @@ public class Menu {
                     logica.dividir();
                     break;
                 case 5:
-                    logica.resultado.getResultado();
+                    logica.mostrarResultadosGuardados();
                     break;
                 case 0:
                     System.out.println("");
