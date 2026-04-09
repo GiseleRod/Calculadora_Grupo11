@@ -1,13 +1,30 @@
 package com.grupo11;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Logica {
     private final Scanner scanner;
-    Resultado resultado = new Resultado();
+    ArrayList<Long> resultadosGuardados = new ArrayList<>();
 
     public Logica() {
         scanner = new Scanner(System.in);
+    }
+
+    public void agregarResultadoGuardado(long resultado) {
+        resultadosGuardados.add(resultado);
+    }
+
+    public void mostrarResultadosGuardados() {
+        int total = resultadosGuardados.size();
+        if (total < 3) {
+            System.out.println("No se hicieron suficientes operaciones para mostrar resultados guardados.");
+        } else {
+            System.out.println("Resultados guardados:");
+            for (int i = total - 3; i < total; i++) {
+                System.out.println(resultadosGuardados.get(i));
+            }
+        } 
     }
 
     public int leerOpcionMenu() {
@@ -34,9 +51,7 @@ public class Logica {
         return opcion;
     }
 
-    public void mostrarResultadosGuardados() {
-        resultado.mostrarResultado();
-    }
+
 
     public void sumar() {
         boolean continuar = true;
@@ -48,7 +63,7 @@ public class Logica {
             try {
                 long resultado = Math.addExact(num1, num2);
                 System.out.println("El resultado de la suma es: " + resultado);
-                this.resultado.agregarResultado(resultado);
+                agregarResultadoGuardado(resultado);
             } catch (ArithmeticException e) {
                 System.out.println("ERROR: El resultado de la suma supera el valor máximo permitido.");
             }
@@ -77,7 +92,7 @@ public class Logica {
             }
             long resultado = mayor - menor;
             System.out.println("El resultado de la resta es: " + resultado);
-            this.resultado.agregarResultado(resultado);
+            agregarResultadoGuardado(resultado);
             continuar = deseaContinuar("restar");
         }
     }
@@ -93,7 +108,7 @@ public class Logica {
             try {
                 long resultado = Math.multiplyExact(num1, num2);
                 System.out.println("El resultado de la multiplicación es: " + resultado);
-                this.resultado.agregarResultado(resultado);
+                agregarResultadoGuardado(resultado);
             } catch (ArithmeticException e) {
                 System.out.println("ERROR: El resultado de la multiplicación supera el valor máximo permitido.");
             }
@@ -126,7 +141,7 @@ public class Logica {
             } else {
                 long resultado = Math.round((float) mayor / menor);
                 System.out.println("El resultado de la división es:" + resultado);
-                this.resultado.agregarResultado(resultado);
+                agregarResultadoGuardado(resultado);
             }
 
             continuar = deseaContinuar("división");
