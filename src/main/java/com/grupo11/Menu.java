@@ -2,12 +2,14 @@ package com.grupo11;
 
 public class Menu {
     private final Logica logica;
+    
+
     public Menu() {
         logica = new Logica();
     }
 
     public void iniciar() {
-        int opcion=0;
+        int opcion = 0;
         do {
             mostrarMenu();
             opcion = logica.leerOpcionMenu();
@@ -25,7 +27,11 @@ public class Menu {
                 case 4:
                     logica.dividir();
                     break;
+                case 5:
+                    logica.mostrarResultadosGuardados();
+                    break;
                 case 0:
+                    System.out.println("");
                     System.out.println("Saliendo del programa...");
                     break;
             }
@@ -36,12 +42,13 @@ public class Menu {
 
     private void mostrarMenu() {
         System.out.println("");
-        System.out.println("*** CALCULADORA BASICA ***");
+        System.out.println("*** CALCULADORA BÁSICA ***");
         System.out.println("");
         System.out.println("[1] - SUMAR");
         System.out.println("[2] - RESTAR");
         System.out.println("[3] - MULTIPLICAR");
         System.out.println("[4] - DIVIDIR");
+        System.out.println("[5] - RESULTADOS GUARDADOS");
         System.out.println("[0] - SALIR DEL PROGRAMA");
         System.out.println("");
     }

@@ -1,47 +1,74 @@
 package com.grupo11;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Logica {
     private final Scanner scanner;
+    ArrayList<Long> resultadosGuardados = new ArrayList<>();
+
     public Logica() {
         scanner = new Scanner(System.in);
     }
+
+    public void agregarResultadoGuardado(long resultado) {
+        resultadosGuardados.add(resultado);
+    }
+
+    public void mostrarResultadosGuardados() {
+        int total = resultadosGuardados.size();
+        if (total < 3) {
+            System.out.println("No se hicieron suficientes operaciones para mostrar resultados guardados.");
+        } else {
+            System.out.println("Resultados guardados:");
+            for (int i = total - 3; i < total; i++) {
+                System.out.println(resultadosGuardados.get(i));
+            }
+        } 
+    }
+
     public int leerOpcionMenu() {
 
         int opcion = 0;
         boolean opcionValida = false;
 
         while (!opcionValida) {
-            System.out.print("SELECCIONAR UNA OPCIÓN [0 a 4] Y PRESIONAR ENTER: ");
+            System.out.print("SELECCIONAR UNA OPCIÓN [0 a 5] Y PRESIONAR ENTER: ");
             if (scanner.hasNextInt()) {
                 opcion = scanner.nextInt();
                 scanner.nextLine();
 
-                if (opcion >= 0 && opcion <= 4) {
+                if (opcion >= 0 && opcion <= 5) {
                     opcionValida = true;
                 } else {
-                    System.out.println("ERROR: La opción debe ser entre 0 y 4");
+                    System.out.println("ERROR: La opción debe estar entre 0 y 5.");
                 }
             } else {
-                System.out.println("ERROR: Se debe ingresar un número");
+                System.out.println("ERROR: Debe ingresar un número.");
                 scanner.nextLine();
             }
         }
         return opcion;
     }
 
+
+
     public void sumar() {
         boolean continuar = true;
         while (continuar) {
-            
-            int num1 = leerEnteroPositivo("Ingrese el primer número: ");
-            int num2 = leerEnteroPositivo("Ingrese el segundo número: ");
-        
-            int resultado = num1 + num2;
-        
-            System.out.println("El resultado de la suma es: " + resultado);
-            continuar = deseaContinuar("sumar");
+
+            long num1 = leerEnteroPositivo("Ingrese el primer número: ");
+            long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
+
+            try {
+                long resultado = Math.addExact(num1, num2);
+                System.out.println("El resultado de la suma es: " + resultado);
+                agregarResultadoGuardado(resultado);
+            } catch (ArithmeticException e) {
+                System.out.println("ERROR: El resultado de la suma supera el valor máximo permitido.");
+            }
+
+            continuar = deseaContinuar("suma");
         }
     }
 
@@ -50,11 +77,11 @@ public class Logica {
 
         while (continuar) {
 
-            int num1 = leerEnteroPositivo("Ingrese el primer número: ");
-            int num2 = leerEnteroPositivo("Ingrese el segundo número: ");
+            long num1 = leerEnteroPositivo("Ingrese el primer número: ");
+            long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
 
-            int mayor;
-            int menor;
+            long mayor;
+            long menor;
 
             if (num1 > num2) {
                 mayor = num1;
@@ -63,80 +90,83 @@ public class Logica {
                 mayor = num2;
                 menor = num1;
             }
-            int resultado = mayor - menor;
+            long resultado = mayor - menor;
             System.out.println("El resultado de la resta es: " + resultado);
+            agregarResultadoGuardado(resultado);
             continuar = deseaContinuar("restar");
         }
     }
 
     public void multiplicar() {
-         boolean continuar = true;
+        boolean continuar = true;
 
         while (continuar) {
 
-            int num1 = leerEnteroPositivo("Ingrese el primer número: ");
-            int num2 = leerEnteroPositivo("Ingrese el segundo número: ");
+            long num1 = leerEnteroPositivo("Ingrese el primer número: ");
+            long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
 
-            int resultado = num1 * num2;
-
-            System.out.println("El resultado de la multiplicación es: " + resultado);
+            try {
+                long resultado = Math.multiplyExact(num1, num2);
+                System.out.println("El resultado de la multiplicación es: " + resultado);
+                agregarResultadoGuardado(resultado);
+            } catch (ArithmeticException e) {
+                System.out.println("ERROR: El resultado de la multiplicación supera el valor máximo permitido.");
+            }
 
             continuar = deseaContinuar("multiplicación");
         }
     }
-    
 
     public void dividir() {
-       boolean continuar = true;
+        boolean continuar = true;
         while (continuar) {
 
-        int num1 = leerEnteroPositivo("Ingrese el primer número: ");
-        int num2 = leerEnteroPositivo("Ingrese el segundo número: ");
+            long num1 = leerEnteroPositivo("Ingrese el primer número: ");
+            long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
 
-        //ORDENAR NÚMEROS
-        int mayor;
-        int menor;
+            // ORDENAR NÚMEROS
+            long mayor;
+            long menor;
 
-        if (num1 > num2) {
-            mayor = num1;
-            menor = num2;
-        } else {
-            mayor = num2;
-            menor = num1;
+            if (num1 > num2) {
+                mayor = num1;
+                menor = num2;
+            } else {
+                mayor = num2;
+                menor = num1;
+            }
+
+            if (mayor % menor == 0) {
+                System.out.println("El resultado de la división es: " + (mayor / menor));
+                agregarResultadoGuardado((mayor / menor));
+            } else {
+                long resultado = Math.round((float) mayor / menor);
+                System.out.println("El resultado de la división es:" + resultado);
+                agregarResultadoGuardado(resultado);
+            }
+
+            continuar = deseaContinuar("división");
         }
-
-        if (mayor % menor == 0) {
-            System.out.println("El resultado de la división es: " + (mayor / menor));
-        } else {
-            double resultado = (double) mayor / menor;
-            System.out.printf("El resultado de la división es: %.2f%n", resultado);
-        }
-
-        continuar = deseaContinuar("división");
     }
-}
 
-
-    private int leerEnteroPositivo(String mensaje) {
+    private long leerEnteroPositivo(String mensaje) {
         while (true) {
             System.out.print(mensaje);
             String entrada = scanner.nextLine();
 
             try {
-                int numero = Integer.parseInt(entrada);
+                long numero = Long.parseLong(entrada);
 
                 if (numero > 0) {
                     return numero;
                 } else {
-                    System.out.println("Error: debe ingresar un número entero positivo mayor que 0.");
+                    System.out.println("ERROR: Debe ingresar un número entero positivo mayor que 0.");
                 }
-
             } catch (NumberFormatException e) { // Si la entrada no es un entero válido, mostrar error y volver a pedir.
-                System.out.println("Error: debe ingresar un valor numérico entero.");
+                System.out.println("ERROR: Debe ingresar un valor numérico entero.");
             }
         }
     }
-
 
     private boolean deseaContinuar(String operacion) {
         while (true) {
@@ -148,7 +178,7 @@ public class Logica {
             } else if (respuesta.equals("N")) {
                 return false;
             } else {
-                System.out.println("Error: debe responder con S o N.");
+                System.out.println("ERROR: Debe responder con S o N.");
             }
         }
     }
