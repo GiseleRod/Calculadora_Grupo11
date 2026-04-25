@@ -1,37 +1,27 @@
 package com.grupo11;
+import java.util.ArrayList;
 
 public class Resultado {
-    private long resultado[];
-    private int index;
-    private int usos;
-
-    public Resultado() {
-        this.resultado = new long[3];
-        this.index = 0;
-        this.usos = 0;
-    }
+    ArrayList<Long> resultados = new ArrayList<>();
 
     public void agregarResultado(long resultado) {
-        usos++;
-        if (index == 3) {
-            index = 0;
+        if(resultados.size() >=3){
+            resultados.remove(0);
         }
-        this.resultado[index] = resultado;
-        index++;
+        resultados.add(resultado);
     }
 
     public void mostrarResultado() {
-        int ciclo = index;
-        if (usos < 3) {
+        if (resultados.size() < 3) {
             System.out.println("No se hicieron suficientes operaciones para mostrar resultados guardados.");
         } else {
-            for (int i = 0; i < resultado.length; i++) {
-                if (ciclo == 3) {
-                    ciclo = 0;
-                }
-                System.out.println(resultado[ciclo]);
-                ciclo++;
+            for(Long res : resultados){ //para cada "res" en "resultados"
+                System.out.println(res);
             }
         }
     }
 }
+// cambios:
+// - se elimina el constructor (java crea uno automaticamente)
+// - se trabaja con un arraylist de 3 elementos maximo
+// - se cambia a un for loop para mostrar resultados
