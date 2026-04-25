@@ -10,12 +10,15 @@ public class Logica {
         scanner = new Scanner(System.in);
     }
 
+    // se implementa un do while para unificar toda la logica
+
     public int leerOpcionMenu() {
 
         int opcion = 0;
         boolean opcionValida = false;
 
-        while (!opcionValida) {
+         do{
+             opcionValida = false;
             System.out.print("SELECCIONAR UNA OPCIÓN [0 a 5] Y PRESIONAR ENTER: ");
             if (scanner.hasNextInt()) {
                 opcion = scanner.nextInt();
@@ -30,8 +33,10 @@ public class Logica {
                 System.out.println("ERROR: Debe ingresar un número.");
                 scanner.nextLine();
             }
-        }
-        return opcion;
+
+         }while(!opcionValida);
+
+         return opcion;
     }
 
     public void mostrarResultadosGuardados() {
@@ -39,8 +44,10 @@ public class Logica {
     }
 
     public void sumar() {
+
         boolean continuar = true;
-        while (continuar) {
+
+        do{
 
             long num1 = leerEnteroPositivo("Ingrese el primer número: ");
             long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
@@ -54,13 +61,15 @@ public class Logica {
             }
 
             continuar = deseaContinuar("suma");
-        }
+
+         }while(continuar);
     }
 
     public void restar() {
+
         boolean continuar = true;
 
-        while (continuar) {
+        do{
 
             long num1 = leerEnteroPositivo("Ingrese el primer número: ");
             long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
@@ -79,13 +88,15 @@ public class Logica {
             System.out.println("El resultado de la resta es: " + resultado);
             this.resultado.agregarResultado(resultado);
             continuar = deseaContinuar("restar");
-        }
+
+        }while(continuar);
     }
 
     public void multiplicar() {
+
         boolean continuar = true;
 
-        while (continuar) {
+        do{
 
             long num1 = leerEnteroPositivo("Ingrese el primer número: ");
             long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
@@ -99,12 +110,15 @@ public class Logica {
             }
 
             continuar = deseaContinuar("multiplicación");
-        }
+
+        }while (continuar);
     }
 
     public void dividir() {
+
         boolean continuar = true;
-        while (continuar) {
+
+        do{
 
             long num1 = leerEnteroPositivo("Ingrese el primer número: ");
             long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
@@ -130,32 +144,45 @@ public class Logica {
             }
 
             continuar = deseaContinuar("división");
-        }
+
+        }while(continuar);
     }
 
     private long leerEnteroPositivo(String mensaje) {
-        while (true) {
+
+        long numero = 0;
+        boolean esValido = false;
+
+        do{
             System.out.print(mensaje);
             String entrada = scanner.nextLine();
 
+
             try {
-                long numero = Long.parseLong(entrada);
+                numero = Long.parseLong(entrada);
 
                 if (numero > 0) {
-                    return numero;
+                    esValido = true;
                 } else {
                     System.out.println("ERROR: Debe ingresar un número entero positivo mayor que 0.");
                 }
             } catch (NumberFormatException e) { // Si la entrada no es un entero válido, mostrar error y volver a pedir.
                 System.out.println("ERROR: Debe ingresar un valor numérico entero.");
             }
-        }
+        }while(!esValido);
+
+        return numero;
     }
 
     private boolean deseaContinuar(String operacion) {
-        while (true) {
+
+        String respuesta;
+        boolean respuestaValida = false;
+        boolean quiereContinuar = false;
+
+        do{
             System.out.print("\n¿Desea efectuar una nueva " + operacion + "? (S/N): ");
-            String respuesta = scanner.nextLine().trim().toUpperCase();
+            respuesta = scanner.nextLine().trim().toUpperCase();
 
             if (respuesta.equals("S")) {
                 return true;
@@ -164,7 +191,9 @@ public class Logica {
             } else {
                 System.out.println("ERROR: Debe responder con S o N.");
             }
-        }
+        }while(!respuestaValida);
+
+        return quiereContinuar;
     }
 
     public void cerrarScanner() {
