@@ -52,7 +52,6 @@ public class Logica {
     }
 
 
-
     public void sumar() {
         boolean continuar = true;
         while (continuar) {
@@ -80,16 +79,9 @@ public class Logica {
             long num1 = leerEnteroPositivo("Ingrese el primer número: ");
             long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
 
-            long mayor;
-            long menor;
+            long mayor = Math.max(num1, num2);
+            long menor = Math.min(num1, num2);
 
-            if (num1 > num2) {
-                mayor = num1;
-                menor = num2;
-            } else {
-                mayor = num2;
-                menor = num1;
-            }
             long resultado = mayor - menor;
             System.out.println("El resultado de la resta es: " + resultado);
             agregarResultadoGuardado(resultado);
@@ -124,23 +116,14 @@ public class Logica {
             long num1 = leerEnteroPositivo("Ingrese el primer número: ");
             long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
 
-            // ORDENAR NÚMEROS
-            long mayor;
-            long menor;
-
-            if (num1 > num2) {
-                mayor = num1;
-                menor = num2;
-            } else {
-                mayor = num2;
-                menor = num1;
-            }
+            long mayor = Math.max(num1, num2);
+            long menor = Math.min(num1, num2);
 
             if (mayor % menor == 0) {
                 System.out.println("El resultado de la división es: " + (mayor / menor));
                 agregarResultadoGuardado((mayor / menor));
             } else {
-                long resultado = Math.round((float) mayor / menor);
+                long resultado = Math.round((double) mayor / menor);
                 System.out.println("El resultado de la división es:" + resultado);
                 agregarResultadoGuardado(resultado);
             }
