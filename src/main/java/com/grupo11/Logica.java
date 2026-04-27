@@ -1,14 +1,13 @@
 package com.grupo11;
 
-import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Logica {
-    private final Scanner scanner;
+    private final EntradaDatos entrada;
     ArrayList<Long> resultadosGuardados = new ArrayList<>();
 
     public Logica() {
-        scanner = new Scanner(System.in);
+        entrada = new EntradaDatos();
     }
 
     public void agregarResultadoGuardado(long resultado) {
@@ -24,38 +23,33 @@ public class Logica {
             for (int i = total - 3; i < total; i++) {
                 System.out.println(resultadosGuardados.get(i));
             }
-        } 
+        }
     }
 
     public int leerOpcionMenu() {
+        while (true) {
+            String input = entrada.leerLinea("SELECCIONAR UNA OPCIÓN [0 a 5]: ");
 
-        int opcion = 0;
-        boolean opcionValida = false;
-
-        while (!opcionValida) {
-            System.out.print("SELECCIONAR UNA OPCIÓN [0 a 5] Y PRESIONAR ENTER: ");
-            if (scanner.hasNextInt()) {
-                opcion = scanner.nextInt();
-                scanner.nextLine();
-
-                if (opcion >= 0 && opcion <= 5) {
-                    opcionValida = true;
-                } else {
-                    System.out.println("ERROR: La opción debe estar entre 0 y 5.");
-                }
-            } else {
+            if (!Validador.esEntero(input)) {
                 System.out.println("ERROR: Debe ingresar un número.");
-                scanner.nextLine();
+                continue;
             }
-        }
-        return opcion;
-    }
 
+            int opcion = Integer.parseInt(input);
+
+            if (!Validador.esOpcionValida(opcion)) {
+                System.out.println("ERROR: La opción debe estar entre 0 y 5.");
+                continue;
+            }
+
+            return opcion;
+        }
+    }
 
     public void sumar() {
         boolean continuar = true;
-        while (continuar) {
 
+        do {
             long num1 = leerEnteroPositivo("Ingrese el primer número: ");
             long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
 
@@ -68,14 +62,14 @@ public class Logica {
             }
 
             continuar = deseaContinuar("suma");
-        }
+
+        } while (continuar);
     }
 
     public void restar() {
         boolean continuar = true;
 
-        while (continuar) {
-
+        do {
             long num1 = leerEnteroPositivo("Ingrese el primer número: ");
             long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
 
@@ -85,15 +79,16 @@ public class Logica {
             long resultado = mayor - menor;
             System.out.println("El resultado de la resta es: " + resultado);
             agregarResultadoGuardado(resultado);
-            continuar = deseaContinuar("restar");
-        }
+
+            continuar = deseaContinuar("resta");
+
+        } while (continuar);
     }
 
     public void multiplicar() {
         boolean continuar = true;
 
-        while (continuar) {
-
+        do {
             long num1 = leerEnteroPositivo("Ingrese el primer número: ");
             long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
 
@@ -106,67 +101,73 @@ public class Logica {
             }
 
             continuar = deseaContinuar("multiplicación");
-        }
+
+        } while (continuar);
     }
 
     public void dividir() {
         boolean continuar = true;
-        while (continuar) {
 
+        do {
             long num1 = leerEnteroPositivo("Ingrese el primer número: ");
             long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
 
             long mayor = Math.max(num1, num2);
             long menor = Math.min(num1, num2);
 
+            long resultado;
+
             if (mayor % menor == 0) {
-                System.out.println("El resultado de la división es: " + (mayor / menor));
-                agregarResultadoGuardado((mayor / menor));
+                resultado = mayor / menor;
             } else {
-                long resultado = Math.round((double) mayor / menor);
-                System.out.println("El resultado de la división es:" + resultado);
-                agregarResultadoGuardado(resultado);
+                resultado = Math.round((double) mayor / menor);
             }
 
+            System.out.println("El resultado de la división es: " + resultado);
+            agregarResultadoGuardado(resultado);
+
             continuar = deseaContinuar("división");
-        }
+
+        } while (continuar);
     }
 
     private long leerEnteroPositivo(String mensaje) {
         while (true) {
-            System.out.print(mensaje);
-            String entrada = scanner.nextLine();
+            String input = entrada.leerLinea(mensaje);
 
-            try {
-                long numero = Long.parseLong(entrada);
-
-                if (numero > 0) {
-                    return numero;
-                } else {
-                    System.out.println("ERROR: Debe ingresar un número entero positivo mayor que 0.");
-                }
-            } catch (NumberFormatException e) { // Si la entrada no es un entero válido, mostrar error y volver a pedir.
+            if (!Validador.esEntero(input)) {
                 System.out.println("ERROR: Debe ingresar un valor numérico entero.");
+                continue;
             }
+
+            long numero = Long.parseLong(input);
+
+            if (!Validador.esPositivo(numero)) {
+                System.out.println("ERROR: Debe ser mayor que 0.");
+                continue;
+            }
+
+            return numero;
         }
     }
 
     private boolean deseaContinuar(String operacion) {
         while (true) {
-            System.out.print("\n¿Desea efectuar una nueva " + operacion + "? (S/N): ");
-            String respuesta = scanner.nextLine().trim().toUpperCase();
+            String input = entrada
+                    .leerLinea("\n¿Desea efectuar una nueva " + operacion + "? (S/N): ")
+                    .trim()
+                    .toUpperCase();
 
-            if (respuesta.equals("S")) {
-                return true;
-            } else if (respuesta.equals("N")) {
-                return false;
-            } else {
+            if (!Validador.esSN(input)) {
                 System.out.println("ERROR: Debe responder con S o N.");
+                continue;
             }
+
+            return input.equals("S");
         }
     }
 
     public void cerrarScanner() {
-        scanner.close();
+        entrada.cerrar();
     }
 }
