@@ -1,29 +1,14 @@
 package com.grupo11;
 
-import java.util.ArrayList;
-
 public class Logica {
     private final EntradaDatos entrada;
-    ArrayList<Long> resultadosGuardados = new ArrayList<>();
+    private final Operaciones operaciones;
+    private final Resultado resultado;
 
     public Logica() {
         entrada = new EntradaDatos();
-    }
-
-    public void agregarResultadoGuardado(long resultado) {
-        resultadosGuardados.add(resultado);
-    }
-
-    public void mostrarResultadosGuardados() {
-        int total = resultadosGuardados.size();
-        if (total < 3) {
-            System.out.println("No se hicieron suficientes operaciones para mostrar resultados guardados.");
-        } else {
-            System.out.println("Resultados guardados:");
-            for (int i = total - 3; i < total; i++) {
-                System.out.println(resultadosGuardados.get(i));
-            }
-        }
+        operaciones = new Operaciones();
+        resultado = new Resultado();
     }
 
     public int leerOpcionMenu() {
@@ -46,6 +31,10 @@ public class Logica {
         }
     }
 
+    public void mostrarResultadosGuardados() {
+        resultado.mostrarResultado();
+    }
+
     public void sumar() {
         boolean continuar = true;
 
@@ -54,9 +43,8 @@ public class Logica {
             long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
 
             try {
-                long resultado = Math.addExact(num1, num2);
-                System.out.println("El resultado de la suma es: " + resultado);
-                agregarResultadoGuardado(resultado);
+                long resultadoOperacion = operaciones.sumar(num1, num2);
+                mostrarYGuardarResultado("suma", resultadoOperacion);
             } catch (ArithmeticException e) {
                 System.out.println("ERROR: El resultado de la suma supera el valor máximo permitido.");
             }
@@ -73,12 +61,8 @@ public class Logica {
             long num1 = leerEnteroPositivo("Ingrese el primer número: ");
             long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
 
-            long mayor = Math.max(num1, num2);
-            long menor = Math.min(num1, num2);
-
-            long resultado = mayor - menor;
-            System.out.println("El resultado de la resta es: " + resultado);
-            agregarResultadoGuardado(resultado);
+            long resultadoOperacion = operaciones.restar(num1, num2);
+            mostrarYGuardarResultado("resta", resultadoOperacion);
 
             continuar = deseaContinuar("resta");
 
@@ -93,9 +77,8 @@ public class Logica {
             long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
 
             try {
-                long resultado = Math.multiplyExact(num1, num2);
-                System.out.println("El resultado de la multiplicación es: " + resultado);
-                agregarResultadoGuardado(resultado);
+                long resultadoOperacion = operaciones.multiplicar(num1, num2);
+                mostrarYGuardarResultado("multiplicación", resultadoOperacion);
             } catch (ArithmeticException e) {
                 System.out.println("ERROR: El resultado de la multiplicación supera el valor máximo permitido.");
             }
@@ -112,23 +95,17 @@ public class Logica {
             long num1 = leerEnteroPositivo("Ingrese el primer número: ");
             long num2 = leerEnteroPositivo("Ingrese el segundo número: ");
 
-            long mayor = Math.max(num1, num2);
-            long menor = Math.min(num1, num2);
-
-            long resultado;
-
-            if (mayor % menor == 0) {
-                resultado = mayor / menor;
-            } else {
-                resultado = Math.round((double) mayor / menor);
-            }
-
-            System.out.println("El resultado de la división es: " + resultado);
-            agregarResultadoGuardado(resultado);
+            long resultadoOperacion = operaciones.dividir(num1, num2);
+            mostrarYGuardarResultado("división", resultadoOperacion);
 
             continuar = deseaContinuar("división");
 
         } while (continuar);
+    }
+
+    private void mostrarYGuardarResultado(String operacion, long resultadoOperacion) {
+        System.out.println("El resultado de la " + operacion + " es: " + resultadoOperacion);
+        resultado.agregarResultado(resultadoOperacion);
     }
 
     private long leerEnteroPositivo(String mensaje) {
