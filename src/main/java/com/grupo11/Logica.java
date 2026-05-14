@@ -11,6 +11,12 @@ public class Logica {
         resultado = new Resultado();
     }
 
+    /**
+     * Solicita al usuario una opción del menú y valida que sea un número entero
+     * dentro del rango permitido (0 a 5).
+     *
+     * @return la opción válida ingresada por el usuario.
+     */
     public int leerOpcionMenu() {
         while (true) {
             String input = entrada.leerLinea("SELECCIONAR UNA OPCIÓN [0 a 5]: ");
@@ -31,10 +37,18 @@ public class Logica {
         }
     }
 
+    /**
+     * Muestra todos los resultados almacenados previamente.
+     */
     public void mostrarResultadosGuardados() {
         resultado.mostrarResultado();
     }
 
+    /**
+     * Realiza operaciones de suma solicitando dos números positivos al usuario.
+     * El resultado obtenido se muestra en pantalla y se almacena en el historial.
+     * Si ocurre un desbordamiento numérico, se informa mediante un mensaje de error.
+     */
     public void sumar() {
         boolean continuar = true;
 
@@ -55,6 +69,10 @@ public class Logica {
          }while(continuar);
     }
 
+    /**
+     * Realiza operaciones de resta solicitando dos números positivos al usuario.
+     * El resultado obtenido se muestra en pantalla y se almacena en el historial.
+     */
     public void restar() {
         boolean continuar = true;
 
