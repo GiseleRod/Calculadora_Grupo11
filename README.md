@@ -3,6 +3,7 @@
 Trabajo práctico de la materia Ingeniería de Software I.
 
 ## Integrantes
+
 - Casas, Diego
 - D'Amico, Lucas Oscar
 - Enecoiz, Faustina
@@ -10,95 +11,113 @@ Trabajo práctico de la materia Ingeniería de Software I.
 - Rodriguez, Gisele
 - Romero, Martín
 
-## Descripción
-Este proyecto consiste en el desarrollo de una calculadora básica por consola, realizada como trabajo práctico grupal para la materia Ingeniería de Software I.
+## Actividad 6 - Herramientas CASE y documentación técnica
 
-El sistema permite realizar las cuatro operaciones básicas de matemática:
-- suma
-- resta
-- multiplicación
-- división
+### Descripción
 
-Además, contempla las validaciones y restricciones solicitadas en la consigna.
+En esta actividad se trabajó sobre el uso de herramientas CASE (Computer Aided Software Engineering), enfocadas en la generación y organización de documentación técnica del sistema.
 
-## Objetivo
-Desarrollar una solución funcional aplicando un proceso de trabajo organizado, contemplando relevamiento de requerimientos, diseño, implementación, validación y presentación final del sistema.
+La herramienta utilizada fue JavaDoc, integrada al ecosistema Java, que permite generar documentación automática en formato HTML a partir del código fuente y comentarios estructurados.
 
-## Funcionalidades incluidas
-La calculadora permite:
+El objetivo principal fue documentar las distintas clases y métodos de la calculadora desarrollada en actividades anteriores, mejorando la comprensión, mantenibilidad y organización del proyecto.
 
-- mostrar un menú principal de opciones
-- seleccionar una operación matemática
-- ingresar dos números enteros positivos de tipo `long`
-- validar que los datos ingresados sean numéricos
-- validar que los valores ingresados sean enteros positivos
-- realizar la operación correspondiente
-- consultar al usuario si desea repetir la operación
-- volver al menú principal o salir del programa
+## Funcionalidades documentadas
 
-## Alcance y funcionalidades no incluidas
-El sistema fue desarrollado de acuerdo con los requerimientos relevados para esta primera versión. En consecuencia, no contempla:
+La documentación técnica generada incluye:
 
-- ingreso de números decimales
-- ingreso de números negativos
-- ingreso del valor 0 como operando
-- operaciones encadenadas
-- cálculo de porcentajes
-- interfaz gráfica
-- almacenamiento de historial de operaciones
-- persistencia de datos
-- resultados que excedan la capacidad máxima del tipo long
-- mostrar el resultado de la división con dos decimales cuando el cociente no es exacto
-
-## Validaciones implementadas
-El sistema incluye las siguientes validaciones:
-
-- la opción del menú debe ser numérica
-- la opción del menú debe estar comprendida entre 0 y 4
-- los valores ingresados para operar deben ser numéricos
-- los valores ingresados deben ser enteros positivos
-- en las operaciones de resta y división, se utiliza primero el número mayor y luego el menor, según lo requerido en la especificación
-- en suma, se valida que el resultado no supere el valor máximo permitido por el tipo long
-- en multiplicación, se valida que el resultado no supere el valor máximo permitido por el tipo long
-- en división, cuando el resultado no es exacto, el sistema muestra el cociente en formato decimal con dos cifras decimales, como decisión de implementación del equipo
+- descripción de clases
+- descripción de métodos
+- parámetros utilizados
+- organización del sistema
+- navegación automática entre componentes
+- estructura general del proyecto
 
 ## Estructura del proyecto
-El proyecto está organizado en tres clases principales:
 
-- `Main`: punto de entrada del programa
-- `Menu`: muestra las opciones y controla la navegación general
-- `Logica`: contiene las operaciones matemáticas y las validaciones
+El sistema se encuentra organizado en las siguientes clases:
+
+- `Main`: punto de entrada del programa.
+- `Menu`: muestra las opciones y controla la navegación general.
+- `Logica`: coordina el flujo de las operaciones.
+- `Operaciones`: contiene los cálculos matemáticos.
+- `EntradaDatos`: gestiona la lectura de datos ingresados por el usuario.
+- `Validador`: contiene validaciones reutilizables.
+- `Resultado`: administra el almacenamiento y visualización de resultados guardados.
+
+## Herramienta CASE utilizada
+
+### JavaDoc
+
+JavaDoc es una herramienta incluida en el JDK de Java que permite generar documentación técnica automática a partir del código fuente.
+
+La documentación se genera mediante comentarios estructurados utilizando el formato:
+
+```java
+/**
+ * Comentario JavaDoc
+ */
+```
+
+A partir de estos comentarios, JavaDoc genera páginas HTML navegables con información sobre clases, métodos y parámetros.
 
 ## Organización del trabajo
-El equipo utilizó GitHub para organizar el desarrollo y centralizar el código fuente, Trello para distribuir y hacer seguimiento de las tareas, y Google Docs para la elaboración colaborativa de la documentación.
 
-Distribución de tareas:
+### Logica (parte 1)
 
-- Lucas D'Amico: menú principal
-- Faustina Enecoiz: suma
-- Martín Romero: resta
-- Diego Casas: pruebas de funcionamiento, organización y presentación de la demo
-- Victoria Pereyra: multiplicación, división y coordinación general del trabajo
-- Gisele Rodríguez: revisión general e integración final
+Estado: sin asignar
 
-La documentación del trabajo fue elaborada de manera colaborativa entre los integrantes del grupo.
+Métodos:
+
+- `leerOpcionMenu()`
+- `mostrarResultadosGuardados()`
+- `sumar()`
+- `restar()`
+
+### Logica (parte 2)
+
+Responsable: Diego Casas
+
+Métodos:
+
+- `multiplicar()`
+- `dividir()`
+- `mostrarYGuardarResultado()`
+- `leerEnteroPositivo()`
+- `deseaContinuar()`
+- `cerrarScanner()`
+
+### Main + Menu
+
+Estado: sin asignar
+
+### Operaciones
+
+Responsable: Faustina Enecoiz
+
+### Resultado
+
+Responsable: Gisele Rodriguez
+
+### Validador + EntradaDatos
+
+Responsable: Martín Romero
 
 ## Herramientas utilizadas
+
 - Java
-- IntelliJ IDEA / NetBeans / VS Code
+- JavaDoc
+- IntelliJ IDEA
 - GitHub
 - Trello
 - Google Docs
 
-## Versión
-Versión actual: 1.0
-
 ## Estado del proyecto
-El proyecto se encuentra finalizado.
+
+El proyecto se encuentra en desarrollo para la entrega de la Actividad 6.
 
 Actualmente se dispone de:
-- código fuente completo
-- archivo ejecutable `.jar`
-- validaciones implementadas según la consigna
-- pruebas manuales de las operaciones y validaciones principales
-- documentación de entrega completa, incluyendo README y manual de uso
+
+- estructura del proyecto organizada
+- distribución parcial de tareas
+- documentación JavaDoc en desarrollo
+- herramienta CASE definida
