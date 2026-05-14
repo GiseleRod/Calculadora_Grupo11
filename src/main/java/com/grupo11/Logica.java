@@ -136,11 +136,13 @@ public class Logica {
             }
 
             if (mayor % menor == 0) {
-                System.out.println("El resultado de la división es: " + (mayor / menor));
+                long resultadoDivision = mayor / menor;
+                System.out.println("El resultado de la división es: " + resultadoDivision);
+                this.resultado.agregarResultado(resultadoDivision);
             } else {
-                long resultado = Math.round((float) mayor / menor);
-                System.out.println("El resultado de la división es:" + resultado);
-                this.resultado.agregarResultado(resultado);
+                long resultadoDivision = Math.round((float) mayor / menor);
+                System.out.println("El resultado de la división es:" + resultadoDivision);
+                this.resultado.agregarResultado(resultadoDivision);
             }
 
             continuar = deseaContinuar("división");
