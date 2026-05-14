@@ -1,10 +1,19 @@
 package com.grupo11;
 
+/**
+ * Clase encargada de gestionar la lógica principal de la calculadora.
+ * Coordina la entrada de datos, las operaciones matemáticas y
+ * el almacenamiento de resultados.
+ */
 public class Logica {
     private final EntradaDatos entrada;
     private final Operaciones operaciones;
     private final Resultado resultado;
 
+    /**
+     * Inicializa los componentes necesarios para la ejecución de la lógica
+     * de la calculadora
+     */
     public Logica() {
         entrada = new EntradaDatos();
         operaciones = new Operaciones();
