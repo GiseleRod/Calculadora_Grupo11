@@ -176,27 +176,21 @@ public class Logica {
 
     private boolean deseaContinuar(String operacion) {
 
-        String respuesta;
-        boolean respuestaValida = false;
-        boolean quiereContinuar = false;
+            while (true) {
+                System.out.print("\n¿Desea efectuar una nueva " + operacion + "? (S/N): ");
+                String respuesta = scanner.nextLine().trim().toUpperCase();
 
-        do{
-            System.out.print("\n¿Desea efectuar una nueva " + operacion + "? (S/N): ");
-            respuesta = scanner.nextLine().trim().toUpperCase();
-
-            if (respuesta.equals("S")) {
-                return true;
-            } else if (respuesta.equals("N")) {
-                return false;
-            } else {
-                System.out.println("ERROR: Debe responder con S o N.");
+                if (respuesta.equals("S")) {
+                    return true;
+                } else if (respuesta.equals("N")) {
+                    return false;
+                } else {
+                    System.out.println("ERROR: Debe responder con S o N.");
+                }
             }
-        }while(!respuestaValida);
+        }
 
-        return quiereContinuar;
-    }
-
-    public void cerrarScanner() {
+        public void cerrarScanner() {
         scanner.close();
     }
 }
