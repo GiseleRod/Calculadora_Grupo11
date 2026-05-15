@@ -11,9 +11,9 @@ public class Main {
 * @param args argumentos recibidos por consola.
 */
     public static void main(String[] args) {
-        //se crea el objeto menú
+        // Se crea el objeto menú
         Menu menu = new Menu();
-        //se inicia el programa mostrando menú
+        // Se inicia el programa mostrando menú
         menu.iniciar();
         
     }
