@@ -97,7 +97,11 @@ public class Logica {
 
         } while (continuar);
     }
-
+    
+    /*
+     * Realiza operaciones de multiplicación solicitando dos números positivos al usuario.
+     * El resultado obtenido se muestra en pantalla y se almacena en el historial.
+     */
     public void multiplicar() {
         boolean continuar = true;
 
@@ -117,7 +121,11 @@ public class Logica {
 
         }while (continuar);
     }
-
+    /*
+     * Realiza operaciones de division solicitando dos números positivos al usuario.
+     * El resultado obtenido se muestra en pantalla y se almacena en el historial.
+     * en caso de dividir por 0 marca error en pantalla.
+     */
     public void dividir() {
         boolean continuar = true;
 
@@ -138,7 +146,10 @@ public class Logica {
         System.out.println("El resultado de la " + operacion + " es: " + resultadoOperacion);
         resultado.agregarResultado(resultadoOperacion);
     }
-
+    /*
+     * Funcion encargada de leer la entrada del usuario y transformarla en un entero positivo.
+     * En caso que la entrada no sea un entero positivo marca error y pide reingresar el numero.
+     */
     private long leerEnteroPositivo(String mensaje) {
         while (true) {
             String input = entrada.leerLinea(mensaje);
@@ -158,7 +169,11 @@ public class Logica {
             return numero;
         }
     }
-
+    /*
+     * Funcion encargada de preguntar al usuario si quiere repetir la operacion realizada.
+     * En caso de una respuesta positiva repite la operacion.
+     * En caso de una respuesta negativa devuelve al usuario al menu principal.
+     */
     private boolean deseaContinuar(String operacion) {
         while (true) {
             String input = entrada
@@ -174,7 +189,9 @@ public class Logica {
             return input.equals("S");
         }
     }
-
+    /*
+     * Cierre de Scanner
+     */
     public void cerrarScanner() {
         entrada.cerrar();
     }
