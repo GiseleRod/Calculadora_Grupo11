@@ -98,9 +98,14 @@ public class Logica {
         } while (continuar);
     }
     
-    /*
+    /**
      * Realiza operaciones de multiplicación solicitando dos números positivos al usuario.
      * El resultado obtenido se muestra en pantalla y se almacena en el historial.
+     * @throws ArithmeticException en caso de overflow
+     * @see leerEnteroPositivo Ingreso de los numeros a operar
+     * @see mostrarYGuardarResultado Funcion para mostrar y guardar el resultado obtenido
+     * @see deseaContinuar Funcion para saber si se repite la operacion
+     * @see operaciones Clase para realizar los calculos
      */
     public void multiplicar() {
         boolean continuar = true;
@@ -121,10 +126,14 @@ public class Logica {
 
         }while (continuar);
     }
-    /*
+    /**
      * Realiza operaciones de division solicitando dos números positivos al usuario.
      * El resultado obtenido se muestra en pantalla y se almacena en el historial.
      * en caso de dividir por 0 marca error en pantalla.
+     * @see leerEnteroPositivo Ingreso de los numeros a operar
+     * @see mostrarYGuardarResultado Funcion para mostrar y guardar el resultado obtenido
+     * @see deseaContinuar Funcion para saber si se repite la operacion
+     * @see operaciones Clase para realizar los calculos
      */
     public void dividir() {
         boolean continuar = true;
@@ -141,14 +150,22 @@ public class Logica {
 
         } while (continuar);
     }
-
+    /**
+     * Muestra el resultado de la operacion recien realizada y guarda su resultado para posterior uso.
+     * @param operacion demarca la operacion realizada (suma, resta, multiplicación, division)
+     * @param resultadoOperacion valor del resultado de la operacion
+     * @see Resultado Clase usada para manejar los resultados
+     */
     private void mostrarYGuardarResultado(String operacion, long resultadoOperacion) {
         System.out.println("El resultado de la " + operacion + " es: " + resultadoOperacion);
         resultado.agregarResultado(resultadoOperacion);
     }
-    /*
+    /**
      * Funcion encargada de leer la entrada del usuario y transformarla en un entero positivo.
      * En caso que la entrada no sea un entero positivo marca error y pide reingresar el numero.
+     * @param mensaje mensaje que se muestra al pedir el numero
+     * @return Numero entero positivo ingresado por el usuario
+     * @see Validador Clase usada para validar datos ingresados
      */
     private long leerEnteroPositivo(String mensaje) {
         while (true) {
@@ -169,10 +186,12 @@ public class Logica {
             return numero;
         }
     }
-    /*
+    /**
      * Funcion encargada de preguntar al usuario si quiere repetir la operacion realizada.
      * En caso de una respuesta positiva repite la operacion.
      * En caso de una respuesta negativa devuelve al usuario al menu principal.
+     * @param operacion operacion que pregunta si quiere repetir el calculo realizado
+     * @return True o false dependiendo de la entrada del usuario
      */
     private boolean deseaContinuar(String operacion) {
         while (true) {
@@ -189,7 +208,7 @@ public class Logica {
             return input.equals("S");
         }
     }
-    /*
+    /**
      * Cierre de Scanner
      */
     public void cerrarScanner() {
